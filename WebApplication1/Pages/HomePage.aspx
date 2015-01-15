@@ -6,7 +6,7 @@
     <section id="content">
       <div class="padding">
         <div class="wrapper margin-bot">
-          <div class="col-3">
+          <div  class="col-3">
             <div class="indent">
               <h2 class="p0"> רשימת קורסים</h2> 
                 <br /><br /><br /><br /><br />
@@ -36,7 +36,12 @@
             <%}%>
         </div>
 </div>
-         <div id="buttonAddRemove" class="buttonAddRemove" >
+         
+        </div>
+            <div id="buttonCourses">
+
+           
+              <div id="buttonAddRemove" class="buttonAddRemove" >
                             <input id="removeCourseBtn" class="myButton" runat="server" name="removeCourseBtn" type="button" value="הסר קורס"/>
                             <asp:Button id="addCourseBtn" runat="server" OnClientClick="return false;" CssClass="myButton" Text="הוסף קורס"  />
               </div>
@@ -53,11 +58,13 @@
                              
                             </li>
                          </ul>
-                        </div>    
-        </div>
-             
+                        </div> 
+                 </div>  
              <div class="col-4">
-            <div class="block-news" id="conectedUser" runat="server"    >
+           
+             
+          </div>
+             <div class="block-news" id="conectedUser" runat="server"    >
               <h3 class="color-4 p2">:אתה מחובר כ</h3>
                 <br/><br/>
                <h3 class="color-4 p2"><label id="UserNameLabel" runat="server"> </label></h3> 
@@ -75,9 +82,6 @@
               </ul>
                 
             </div>
-             
-          </div>
-
         </div>
   
       </div>

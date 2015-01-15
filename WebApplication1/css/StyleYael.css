@@ -36,12 +36,12 @@ color:white;
 
 .buttonStock{
     background:none;
- //   border:none;
+
 margin-right: 5px;
-//margin-top: 2px;
+
 font-size: large;
 color:white;
-border-color:black;
+border: none;
 }
 
 .buttonStock:hover {
@@ -71,6 +71,7 @@ border-color:black;
     //lighting-color:#E00000;
    // opacity: 0.8;
     height: 30px;
+    border: 2.5px solid black;
     
 }
 
@@ -148,12 +149,20 @@ margin-right: 28px;
 .buttonAddRemove{
 
   float: right;
-margin-top: 180px;
-margin-right: -404px;
-/*position: static;*/
-/*height: 100px;*/
+
+margin-right: 18px;
+
+
+/*float: left;
+margin-left: 235px;*/
+height:auto;
+right:auto;
 }
 
+#buttonCourses {
+   width: 655px;
+margin-right: 41px;
+}
 #inputAddRemove{
     border: 1px solid #999999;
 width: 300px;
