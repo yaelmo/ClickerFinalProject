@@ -135,8 +135,13 @@ $(document).ready(function () {
 $(document).ready(function () {
     $("#MainContent_closeButton").click(function () {
 
+        document.getElementById('MainContent_removeCourseBtn').style.display = 'inline';
+        document.getElementById('MainContent_addCourseBtn').style.display = 'inline';
         document.getElementById('buttonAddRemove').style.display = 'inline';
+        
         document.getElementById('inputAddRemove').style.display = 'none';
+
+        
 
     });
 });
