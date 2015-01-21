@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Web.Services;
 using WebApplication1.BL;
 using WebApplication1.classes;
+using WebApplication1.Classes;
 
 namespace WebApplication1.Pages
 {
@@ -17,8 +18,9 @@ namespace WebApplication1.Pages
         static QuestionBL questionBL;
         public List<Questionnaire> listQuestionnaire;
         public static List<Question> listQuestion;
-        private int idCourse = 0;
+        private static int idCourse = 0;
         private String CourseName;
+        private static GlobalFunction global;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,6 +30,8 @@ namespace WebApplication1.Pages
             questionBL = new QuestionBL();
             listQuestionnaire = new List<Questionnaire>();
             listQuestion = new List<Question>();
+            global = new GlobalFunction();
+            courseBL = new CourseBL();
             
 
             if (Request.QueryString["IdCourse"] != null)
@@ -68,6 +72,14 @@ namespace WebApplication1.Pages
             Response.Write("<script language=javascript>alert('השדה שאתה רוצה למחוק בשימוש');</script>");
 
             listQuestion = questionBL.getAllQuestionByQuestionnaire(Convert.ToInt32(QuestionnaireId.Value));
+        }
+
+       [WebMethod]
+        public static void removeCourse()
+        {
+            global.removeLecurerCourseFromDB(idCourse); // remove Lecurer course
+         
+
         }
     }
 }

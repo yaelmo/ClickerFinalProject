@@ -706,7 +706,7 @@ h1 {
     -webkit-border-radius: 18px 18px 18px 18px;
     position: relative;
     z-index: 2;
-    min-height: 420px;
+    min-height: 400px;
 }
 
     #content .padding {

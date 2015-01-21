@@ -162,6 +162,14 @@ right:auto;
 #buttonCourses {
    width: 655px;
 margin-right: 41px;
+min-height: 45px;
+}
+
+#buttonCoursesQ {
+    width: 253px;
+    margin-top: 100px;
+    height: 40px;
+    max-height: 100px;
 }
 #inputAddRemove{
     border: 1px solid #999999;

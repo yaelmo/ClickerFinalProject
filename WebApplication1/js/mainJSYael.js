@@ -131,6 +131,31 @@ $(document).ready(function () {
     });
 });
 
+
+// remove course FromQ
+$(document).ready(function () {
+    $("#MainContent_removeCourseBtnFromQ").click(function () {
+        
+        var remove = confirm("האם אתה בטוח שברצונך להסיר את הקורס עם כל השאלונים?");
+        if (remove) {
+            $.ajax({
+                type: "POST",
+                url: "StockQuestionnaires.aspx/removeCourse",
+                data: '{}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    window.location.replace("HomePage.aspx");
+                },
+                failure: function (response) {
+                    alert("ajax failure");
+
+                }
+            });
+        }
+    });
+});
+
 // close button
 $(document).ready(function () {
     $("#MainContent_closeButton").click(function () {
@@ -145,3 +170,4 @@ $(document).ready(function () {
 
     });
 });
+

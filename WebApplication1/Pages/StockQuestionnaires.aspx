@@ -9,6 +9,7 @@
 
                 <div class="padding">
                 <div class="indentStock" id="stockQuestionnaire" style="display: inline" runat="server">
+                                       
                     <h3 class="color-4 p2">מאגר שאלונים: <% =getCourseName() %></h3>
                     <div class="QuestionnaireIndent">
                         <input type="text" id="QuestionnaireId" style="display: none" runat="server" value="0" />
@@ -29,8 +30,7 @@
                             <%}%>
                         </ul>
                     </div>
-                    <button>הוסף קורס</button>
-                    <button>הסר קורס</button>
+           
                 </div>
             </div>
 
@@ -58,7 +58,14 @@
                     </div>
                 </div>
             </div>
+            <div id="buttonCourses">
 
+           
+              <div id="buttonAddRemove" class="buttonAddRemove" >
+                            <input id="removeCourseBtnFromQ" class="myButton" runat="server" name="removeCourseBtn" type="button" value="הסר קורס"/>  
+              </div>
+                 
+                 </div> 
             <div id="fade" class="black_overlay" onclick="closeStockQuestion()" runat="server"></div>
 
         </section>

@@ -10,6 +10,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebApplication1.BL;
 using WebApplication1.classes;
+using WebApplication1.Classes;
 
 namespace WebApplication1.Pages
 {
@@ -21,12 +22,8 @@ namespace WebApplication1.Pages
         static StudentBL studentBl;
         private static CourseBL courseBL;
         private static CourseRegisterBL courseRegisterBL;
-        private static QuestionnaireBL questionnaireBL;
-        private static QuestionBL questionBL;
-        private static QuestionAskedBL questionAskedBL;
-        private static List<Questionnaire> listQuestionnaire;
-        private static List<Question> listQuestion;
-        private static AnswerBL answerBL;
+        private static GlobalFunction global;
+        
         public static List<Course> listCourse;
         static List<Student> listStudent;
         static List<Lecturer> listLecturer;
@@ -34,7 +31,7 @@ namespace WebApplication1.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            global = new GlobalFunction();
             lectureBL = new LecturerBL();
             studentBl = new StudentBL();
             listStudent = new List<Student>();
@@ -176,7 +173,7 @@ namespace WebApplication1.Pages
                     {
                         idCourse = listCourse[i].getId();
                         listCourse.RemoveAt(i);
-                        removeLecurerCourseFromDB(idCourse); // remove Lecurer course
+                        global.removeLecurerCourseFromDB(idCourse); // remove Lecurer course
                         return ".הקורס הוסר בהצלחה";
                     }
                 }
@@ -210,41 +207,7 @@ namespace WebApplication1.Pages
             return "הקורס לא קיים במערכת.";
         }
 
-        //Method removes all information related to this course
-        private static void removeLecurerCourseFromDB(int idCourse)
-        {
-            listQuestionnaire = new List<Questionnaire>();
-            listQuestion = new List<Question>();
-            questionnaireBL = new QuestionnaireBL();
-            questionBL = new QuestionBL();
-            answerBL = new AnswerBL();
-            questionAskedBL = new QuestionAskedBL();
-
-            listQuestionnaire = questionnaireBL.getAllQuestionnaireByIdCourse(idCourse);
-            for (int i = 0; i < listQuestionnaire.Count; i++)
-            {
-                listQuestion = questionBL.getAllQuestionByQuestionnaire(listQuestionnaire[i].getId());
-                for (int j = 0; j < listQuestion.Count; j++)
-                {
-                    questionAskedBL.deleteQuestionAskedByIdQuestion(listQuestion[j].getId()); // delete all QuestionAsked By IdQuestion
-                    answerBL.deleteAnswerByIdQuestion(listQuestion[j].getId()); // delete all answer By IdQuestion
-                }
-                listQuestion = null;
-                questionBL.deleteQuestionByQuestionnaire(listQuestionnaire[i].getId()); //delete all Question By Questionnaire
-            }
-            listQuestionnaire = null;
-            questionnaireBL.deleteQuestionnaireByIdCours(idCourse);//delete all Questionnaire By IdCours
-
-            courseRegisterBL.deleteCourseRegisterByIdCourse(idCourse);//delete all CourseRegister By IdCourse
-
-            courseBL.deleteCoursesById(idCourse);//delete course from DB
-
-            //"free" object
-            questionnaireBL = null;
-            questionBL = null;
-            answerBL = null;
-            questionAskedBL = null;
-        }
+       
 
 
        // [System.Web.Services.WebMethod(EnableSession = true)]
