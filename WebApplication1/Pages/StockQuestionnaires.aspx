@@ -63,6 +63,10 @@
            
               <div id="buttonAddRemove" class="buttonAddRemove" >
                             <input id="removeCourseBtnFromQ" class="myButton" runat="server" name="removeCourseBtn" type="button" value="הסר קורס"/>  
+                                              <input id="Button1" class="myButton" runat="server" name="removeCourseBtn" type="button" value="הוספת שאלון"/>  
+
+                                              <input id="Button2" class="myButton" runat="server" name="removeCourseBtn" type="button" value="הסרת שאלון"/>  
+
               </div>
                  
                  </div> 
