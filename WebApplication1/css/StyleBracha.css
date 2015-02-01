@@ -706,7 +706,7 @@ h1 {
     -webkit-border-radius: 18px 18px 18px 18px;
     position: relative;
     z-index: 2;
-    min-height: 400px;
+    min-height: 430px;
 }
 
     #content .padding {
@@ -849,7 +849,7 @@ h6 {
     float: right;
     width: 205px;
     padding: 27px 33px 30px;
-    margin: 15px 670px;
+    margin: -22px 678px;
     border: 1px solid #eaeaea;
     background: url(../images/block-news-tail.gif) 0 0 repeat-x #f9f9f9;
     border-radius: 18px;

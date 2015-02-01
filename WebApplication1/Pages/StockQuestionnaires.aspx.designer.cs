@@ -31,13 +31,13 @@ namespace WebApplication1.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl stockQuestionnaire;
         
         /// <summary>
-        /// QuestionnaireId control.
+        /// QuestionnaireName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText QuestionnaireId;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText QuestionnaireName;
         
         /// <summary>
         /// NameQuestionnaire control.
@@ -56,6 +56,15 @@ namespace WebApplication1.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl StockQuestion;
+        
+        /// <summary>
+        /// closeButtonQuestions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button closeButtonQuestions;
         
         /// <summary>
         /// QuestionId control.
@@ -85,22 +94,22 @@ namespace WebApplication1.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlInputButton removeCourseBtnFromQ;
         
         /// <summary>
-        /// Button1 control.
+        /// removeQuestionnaireBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton Button1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton removeQuestionnaireBtn;
         
         /// <summary>
-        /// Button2 control.
+        /// addQuestionnaireBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton Button2;
+        protected global::System.Web.UI.WebControls.Button addQuestionnaireBtn;
         
         /// <summary>
         /// conectedUser control.

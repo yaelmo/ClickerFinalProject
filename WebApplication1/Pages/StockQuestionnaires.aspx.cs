@@ -13,7 +13,7 @@ namespace WebApplication1.Pages
 {
     public partial class c : System.Web.UI.Page
     {
-        private QuestionnaireBL questionnaireBL;
+        public QuestionnaireBL questionnaireBL;
         private CourseBL courseBL;
         static QuestionBL questionBL;
         public List<Questionnaire> listQuestionnaire;
@@ -52,6 +52,7 @@ namespace WebApplication1.Pages
                 //CourseNameLabe.InnerText = "חיפוש";
 
                 CourseName = "חיפוש";
+                removeCourseBtnFromQ.Style.Add("display", "none");
                 listQuestionnaire = questionnaireBL.getAllQuestionnaireByPermit();
             }
             
@@ -66,14 +67,27 @@ namespace WebApplication1.Pages
 
         public void onClick_Questionnaire(object sender, EventArgs e)
         {
-            Response.Redirect(Request.RawUrl);
+            //Response.Redirect(Request.RawUrl);
             stockQuestionnaire.Style.Add("display", "none");
             StockQuestion.Style.Add("display", "inline");
-            Response.Write("<script language=javascript>alert('השדה שאתה רוצה למחוק בשימוש');</script>");
+            //Response.Write("<script language=javascript>alert('השדה שאתה רוצה למחוק בשימוש');</script>");
 
-            listQuestion = questionBL.getAllQuestionByQuestionnaire(Convert.ToInt32(QuestionnaireId.Value));
+            if (idCourse!= 0)
+            {
+                int QuestionnaireId = questionnaireBL.getIdQuestionnaireByIdCourseAndName(QuestionnaireName.Value, idCourse);
+                listQuestion = questionBL.getAllQuestionByQuestionnaire(QuestionnaireId);
+            }
         }
 
+        //add questionnaire
+        public void add_Question_Click(object sender, EventArgs e)
+        {
+            String name = getCourseName();
+            Response.Redirect("AddQuestion.aspx?courseName=" + name);
+        }
+
+
+        //remove course
        [WebMethod]
         public static void removeCourse()
         {

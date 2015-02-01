@@ -71,5 +71,14 @@ namespace WebApplication1.BL
             QuestionnaireList = questionnaireDAL.getAllQuestionnaireByPermit();
             return QuestionnaireList;
         }
+
+        public int getIdQuestionnaireByIdCourseAndName(String Name, int IdCourse)
+        {
+            QuestionnaireList = questionnaireDAL.getIdQuestionnaireByIdCourseAndName(IdCourse);
+            for (int i = 0; i < QuestionnaireList.Count; i++)
+                if (Name.Trim().Equals(QuestionnaireList[i].getName().Trim()))
+                    return QuestionnaireList[i].getId();
+            return 0;
+        }
     }
 }

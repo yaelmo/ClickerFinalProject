@@ -1,4 +1,6 @@
 ﻿
+
+
 function onClickQuestionnaire() {
 
     setQuestionnaireID();
@@ -16,13 +18,9 @@ function onClickQuestion() {
 
 }
 
-//function closeStockQuestion() {
-
-//}
-
-function setQuestionnaireID(id) {
-    $("#MainContent_QuestionnaireId").val(id);
-    // alert("click");
+//save name of Questionnaire
+function setQuestionnaireName(id) {
+    $("#MainContent_QuestionnaireName").val(id);
 }
 
 function setQuestionID(id) {
@@ -166,7 +164,15 @@ $(document).ready(function () {
         
         document.getElementById('inputAddRemove').style.display = 'none';
 
-        
+    });
+});
+
+// close button Question
+$(document).ready(function () {
+    $("#MainContent_closeButtonQuestions").click(function () {
+
+        document.getElementById('MainContent_StockQuestion').style.display = 'none';
+        document.getElementById('MainContent_stockQuestionnaire').style.display = 'inline';
 
     });
 });

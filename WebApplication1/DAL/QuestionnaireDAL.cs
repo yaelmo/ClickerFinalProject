@@ -181,6 +181,26 @@ namespace WebApplication1.DAL
             con.Close();
             return listQuestionnaire;
         }
+
+        public List<Questionnaire> getIdQuestionnaireByIdCourseAndName(int IdCourse)
+        {
+            con.Open();
+            string sqlString = "select * from Questionnaire q where q.IdCours = "+ IdCourse + " AND q.Permit = 1 ;";
+            SqlCommand com = new SqlCommand(sqlString, con);
+            List<Questionnaire> listQuestionnaire = new List<Questionnaire>();
+            using (SqlDataReader rdr = com.ExecuteReader())
+            {
+                while (rdr.Read())
+                {
+                    listQuestionnaire.Add(new Questionnaire(Convert.ToInt32(rdr["Id"]), rdr["Name"].ToString(),
+                        Convert.ToInt32(rdr["IdCours"]), Convert.ToInt32(rdr["Permit"])));
+                }
+            }
+
+            con.Close();
+            return listQuestionnaire;
+        }
+
  
     }
 }

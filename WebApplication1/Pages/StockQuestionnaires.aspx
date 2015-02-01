@@ -7,23 +7,26 @@
         <section id="content">
       <div class="padding">
         <div class="wrapper margin-bot">
-          <div  class="col-3">
+          <div  class="col-3" id="stockList">
+                            <h2 class="p0"> מאגר שאלונים  <% =getCourseName() %></h2> 
             <div class="indent" id="stockQuestionnaire" style="display: inline" runat="server">
-              <h2 class="p0"> מאגר שאלונים: <% =getCourseName() %></h2> 
                 <br /><br /><br /><br /><br />
                 <div class="QuestionnaireIndent">
-                        <input type="text" id="QuestionnaireId" style="display: none" runat="server" value="0" />
+                        <input type="text" id="QuestionnaireName" style="display: none" runat="server" value="0" />
                         <ul class="Questionnaire">
                         
                             <%  for (int i = 0; i < listQuestionnaire.Count; i++)
                                 {
                                     NameQuestionnaire.Text = listQuestionnaire[i].getName().Trim();
+                                   
                                         %>
-                            <li id='<% =listQuestionnaire[i].getId() %>'>
-                                <div class="liDive">
+                            <li >
+                                <div id="QuestionnaireLiDiv" class="liDive">
                                     <input id="classDisplayBtn" type="button" class="buttonStock" value="הצג לכיתה" />
                                     <input id="staticBtn" type="button" class="buttonStock" value="סטטיסטיקה" />
-                                    <asp:Button runat="server" id="NameQuestionnaire" OnClientClick="setQuestionnaireId($(this).last().parent().prop('id'));" OnClick ="onClick_Questionnaire" Text=""></asp:Button>
+                                    <div id='<% =listQuestionnaire[i].getName() %>'>
+                                    <asp:Button runat="server" id="NameQuestionnaire" OnClientClick="setQuestionnaireName($(this).last().parent().prop('id'));" OnClick ="onClick_Questionnaire" Text=""></asp:Button>
+                                        </div>
                                 </div>
                             </li>
 
@@ -33,8 +36,11 @@
 </div>
 
 <div class="indentStock" id="StockQuestion" style="display: none" runat="server">
-                    <div class="QuestenClass">
-                        <h3 class="color-4 p2">מאגר שאלות: <% =getCourseName() %> </h3>
+                           
+                    <div class="QuestionClass">
+                    <asp:Button ID="closeButtonQuestions" runat="server" OnClientClick="return false;" CssClass="closeButton" Text="x"/>
+                        <br />
+                         <h3 id="stockQuestionText" class="color-4 p2">מאגר שאלות: <% =QuestionnaireName.Value %> </h3>
                         <div class="QuestionnaireIndent">
                             <input type="text" id="QuestionId" style="display: none" runat="server" value="0" />
                             <ul class="Questionnaire">
@@ -43,7 +49,7 @@
                                         NameQuestion.Text = listQuestion[j].getQuestion();
                                         %>
                                 <li id="Question"+'<% =listQuestion[j].getId() %>'>
-                                    <div class="liDive">
+                                    <div id="QuestionLiDiv" class="liDive">
 
                                         <asp:Button runat="server" id="NameQuestion" OnClientClick="setQuestionId($(this).last().parent().prop('id'));"  Text=""></asp:Button>
                                     </div>
@@ -60,17 +66,21 @@
             <div id="buttonCourses">
 
            
-              <div id="buttonAddRemove" class="buttonAddRemove" >
-                        <input id="removeCourseBtnFromQ" class="myButton" runat="server" name="removeCourseBtn" type="button" value="הסר קורס"/>  
-                                              <input id="Button1" class="myButton" runat="server" name="removeCourseBtn" type="button" value="הוספת שאלון"/>  
+              <div id="buttonAddRemoveQ" class="buttonAddRemove" >
 
-                                              <input id="Button2" class="myButton" runat="server" name="removeCourseBtn" type="button" value="הסרת שאלון"/>  
- </div>
-                 
+                        <input id="removeCourseBtnFromQ" class="myButton" runat="server" name="removeCourseBtn" type="button" value="הסר קורס"/>  
+
+                        <input id="removeQuestionnaireBtn" class="myButton" runat="server" name="removeQuestionnaireBtn" type="button" value="הסרת שאלון"/>  
+                        <asp:Button ID="addQuestionnaireBtn" runat="server" CssClass="myButton" OnClick="add_Question_Click" Text="הוספת שאלון"></asp:Button>
+
+                    </div>
+              
+               </div>  
+            
              <div class="col-4">
            
-             
-          </div>
+              </div>
+          
              <div class="block-news" id="conectedUser" runat="server"    >
               <h3 class="color-4 p2">:אתה מחובר כ</h3>
                 <br/><br/>
@@ -89,7 +99,9 @@
               </ul>
                 
             </div>
-        </div>
+
+                 
+       </div>
   
       </div>
     </section>

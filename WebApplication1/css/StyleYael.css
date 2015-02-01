@@ -1,4 +1,15 @@
-﻿.indentStock{
+﻿
+
+#stockQuestionText{
+    color:#FF0000;
+}
+
+#MainContent_removeCourseBtnFromQ{
+
+    margin-right: 310px;
+}
+
+.indentStock{
 
     margin-right: 25px;
 }
@@ -16,7 +27,7 @@
     text-align:right;
     
      font-size:x-large;
-     //color:black;
+  
 }
 
 #MainContent_NameQuestionnaire{
@@ -65,11 +76,16 @@ border: none;
     
 }
 
+#QuestionnaireLiDiv{
+     background-color: #FF0000 ;
+}
+
+#QuestionLiDiv{
+
+}
 .QuestionnaireIndent .liDive{
 
-    background-color: #FF0000 ;
-    //lighting-color:#E00000;
-   // opacity: 0.8;
+
     height: 30px;
     border: 2.5px solid black;
     
@@ -104,14 +120,15 @@ border: none;
     color:white;
 }
 
-.QuestenClass{
+.QuestionClass{
 padding: 27px 33px 30px;
 border: 1px solid #eaeaea;
-background: url(../images/block-news-tail.gif) 0 0 repeat-x #f9f9f9;
+/*background: url(../images/block-news-tail.gif) 0 0 repeat-x #f9f9f9;*/
 border-radius: 18px;
 -moz-border-radius: 18px;
 -webkit-border-radius: 18px;
 min-height: 240px;
+margin-top: 55px;
 }
 
 #MainContent_courseName {
@@ -144,17 +161,29 @@ margin-right: 28px;
 	top:1px;
 }
 
+#MainContent_closeButtonQuestions{
+    float: right;
+margin-right: -16px;
+margin-top: -16px;
 
+}
+
+
+#buttonAddRemove{
+
+    margin-right: 18px;
+}
+
+#buttonAddRemoveQ{
+
+
+}
 
 .buttonAddRemove{
 
   float: right;
 
-margin-right: 18px;
 
-
-/*float: left;
-margin-left: 235px;*/
 height:auto;
 right:auto;
 }
@@ -174,6 +203,7 @@ min-height: 45px;
 #inputAddRemove{
     border: 1px solid #999999;
 width: 300px;
+margin-right: 18px;
 }
 .buttonAddRemove li {
 
