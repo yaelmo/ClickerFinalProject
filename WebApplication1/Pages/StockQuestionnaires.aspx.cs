@@ -81,5 +81,12 @@ namespace WebApplication1.Pages
          
 
         }
+
+       //free session and redirect to login page.
+       protected void logout_click(object sender, EventArgs e)
+       {
+           Session.Abandon();
+           Response.Redirect("logIn.aspx");
+       }
     }
 }

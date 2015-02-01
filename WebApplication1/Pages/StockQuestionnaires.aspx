@@ -4,14 +4,14 @@
 
     <form class="form" runat="server" id="Form1" action="#" method="post" enctype="multipart/form-data">
         <!-- content -->
-        <section class="contentClass" id="content">
-            
-
-                <div class="padding">
-                <div class="indentStock" id="stockQuestionnaire" style="display: inline" runat="server">
-                                       
-                    <h3 class="color-4 p2">מאגר שאלונים: <% =getCourseName() %></h3>
-                    <div class="QuestionnaireIndent">
+        <section id="content">
+      <div class="padding">
+        <div class="wrapper margin-bot">
+          <div  class="col-3">
+            <div class="indent" id="stockQuestionnaire" style="display: inline" runat="server">
+              <h2 class="p0"> מאגר שאלונים: <% =getCourseName() %></h2> 
+                <br /><br /><br /><br /><br />
+                <div class="QuestionnaireIndent">
                         <input type="text" id="QuestionnaireId" style="display: none" runat="server" value="0" />
                         <ul class="Questionnaire">
                         
@@ -30,12 +30,9 @@
                             <%}%>
                         </ul>
                     </div>
-           
-                </div>
-            </div>
+</div>
 
-            <div class="padding2">
-                <div class="indentStock" id="StockQuestion" style="display: none" runat="server">
+<div class="indentStock" id="StockQuestion" style="display: none" runat="server">
                     <div class="QuestenClass">
                         <h3 class="color-4 p2">מאגר שאלות: <% =getCourseName() %> </h3>
                         <div class="QuestionnaireIndent">
@@ -56,23 +53,46 @@
                             </ul>
                         </div>
                     </div>
+
                 </div>
-            </div>
+         
+        </div>
             <div id="buttonCourses">
 
            
               <div id="buttonAddRemove" class="buttonAddRemove" >
-                            <input id="removeCourseBtnFromQ" class="myButton" runat="server" name="removeCourseBtn" type="button" value="הסר קורס"/>  
+                        <input id="removeCourseBtnFromQ" class="myButton" runat="server" name="removeCourseBtn" type="button" value="הסר קורס"/>  
                                               <input id="Button1" class="myButton" runat="server" name="removeCourseBtn" type="button" value="הוספת שאלון"/>  
 
                                               <input id="Button2" class="myButton" runat="server" name="removeCourseBtn" type="button" value="הסרת שאלון"/>  
-
-              </div>
+ </div>
                  
-                 </div> 
-            <div id="fade" class="black_overlay" onclick="closeStockQuestion()" runat="server"></div>
-
-        </section>
+             <div class="col-4">
+           
+             
+          </div>
+             <div class="block-news" id="conectedUser" runat="server"    >
+              <h3 class="color-4 p2">:אתה מחובר כ</h3>
+                <br/><br/>
+               <h3 class="color-4 p2"><label id="UserNameLabel" runat="server"> </label></h3> 
+            <br/><br/>
+                  <ul class="list-2">
+                   <li>  
+                     <div   id="profile">
+                     <asp:Image runat="server" ID="userImage" CssClass="userImage" />
+                   </div>
+                </li>   
+                      <li>
+                           <asp:Button ID="logoutBtn" runat="server" CssClass="myButton" OnClick="logout_click" Text="התנתק"></asp:Button>
+                      </li>  
+            
+              </ul>
+                
+            </div>
+        </div>
+  
+      </div>
+    </section>
     </form>
 </asp:Content>
 
