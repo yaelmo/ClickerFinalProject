@@ -103,7 +103,8 @@ namespace WebApplication1.Pages
         {
 
             String tempName = courseName;
-            int userId, tempId;
+            int userId, tempId, idCourse;
+            //idCourse = Convert.ToInt32(courseName);
 
             if (courseName.Length > MAX_LENGTH_NAME_COURSE)// name to long
             {
@@ -113,7 +114,7 @@ namespace WebApplication1.Pages
             int maxIdCourse;
 
             userId = Convert.ToInt32(HttpContext.Current.Session["id"]);
-
+           // tempName = Convert.ToString(courseBL.getNameById(idCourse));
             for (int i = 0; i < listCourse.Count; i++)// check if this course exist
             {
                 tempName = listCourse[i].getName().Trim();
@@ -138,7 +139,7 @@ namespace WebApplication1.Pages
                 tempCourseID = courseBL.getMaxIdCourse();
                 try
                 {
-                    courseID = Convert.ToInt32(courseName);  /////////////////////// get id course by course name and lecturer id
+                    courseID = courseBL.getIdByIdLecturerAndCourseName(Convert.ToInt32(HttpContext.Current.Session["id"]), courseName); //Convert.ToInt32(courseName);  /////////////////////// get id course by course name and lecturer id
                 }
                 catch (FormatException)
                 {
@@ -192,7 +193,7 @@ namespace WebApplication1.Pages
                 {
                     int tempId;
 
-                    tempId = listCourse[i].getId();  /////////////////////// get id course by course name and lecturer id
+                    tempId = listCourse[i].getId();//courseBL.getIdByIdLecturerAndCourseName(Convert.ToInt32(HttpContext.Current.Session["id"]), nameCourse);  /////////////////////// get id course by course name and lecturer id
 
                     if (tempId == idCourse)
                     {

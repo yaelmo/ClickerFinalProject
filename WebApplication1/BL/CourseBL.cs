@@ -36,5 +36,11 @@ namespace WebApplication1.BL
             return courseDAL.getNameById(Id);
         }
 
+            //get course Id By IdLecturer And Course Name
+        public int getIdByIdLecturerAndCourseName(int LecturerId, String Name)
+        {
+            return getIdByIdLecturerAndCourseName(LecturerId, Name);
+        }
+
     }
 }

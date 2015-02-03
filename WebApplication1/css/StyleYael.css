@@ -1,5 +1,9 @@
 ﻿
-
+#MainContent_NameQuestion{
+    background-color:white;
+    border:none;
+    width:550px;
+}
 #stockQuestionText{
     color:#FF0000;
 }
