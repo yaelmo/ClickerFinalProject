@@ -208,8 +208,7 @@ namespace WebApplication1.Pages
             return "הקורס לא קיים במערכת.";
         }
 
-       
-
+        
 
        // [System.Web.Services.WebMethod(EnableSession = true)]
         public void goStock_Click(object sender, EventArgs e)

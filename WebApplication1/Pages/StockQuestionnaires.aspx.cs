@@ -17,6 +17,8 @@ namespace WebApplication1.Pages
         private CourseBL courseBL;
         static QuestionBL questionBL;
         public List<Questionnaire> listQuestionnaire;
+        public List<Answer> listAnswer;
+        public AnswerBL answerBL;
         public static List<Question> listQuestion;
         private static int idCourse = 0;
         private String CourseName;
@@ -30,8 +32,10 @@ namespace WebApplication1.Pages
             questionBL = new QuestionBL();
             listQuestionnaire = new List<Questionnaire>();
             listQuestion = new List<Question>();
+            listAnswer = new List<Answer>();
             global = new GlobalFunction();
             courseBL = new CourseBL();
+            answerBL = new AnswerBL();
             
 
             if (Request.QueryString["IdCourse"] != null)
@@ -78,6 +82,12 @@ namespace WebApplication1.Pages
                 listQuestion = questionBL.getAllQuestionByQuestionnaire(QuestionnaireId);
             }
         }
+        public void onClick_Question(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(QuestionId.Value);
+            listAnswer = answerBL.getAllAnswerByIdQuestion(id);
+        }
+        
 
         //add questionnaire
         public void add_Question_Click(object sender, EventArgs e)

@@ -42,9 +42,15 @@
 
            
               <div id="buttonAddRemove" class="buttonAddRemove" >
+                  <ul>
+                         <li>
                             <input id="removeCourseBtn" class="myButton" runat="server" name="removeCourseBtn" type="button" value="הסר קורס"/>
                             <asp:Button id="addCourseBtn" runat="server" OnClientClick="return false;" CssClass="myButton" Text="הוסף קורס"  />
-              </div>
+              </li>
+                      
+                         </ul>    
+                </div>
+                
                  <div id="inputAddRemove" class="buttonAddRemove" style="display:none">
                      <ul>
                          <li>
@@ -57,6 +63,9 @@
 
                              
                             </li>
+                         <li>
+                          <label id="errMesegeEmpty" style="display: none" runat="server" class="errMesege">יש להכניס תחילה את שם הקורס*</label>
+                      </li>
                          </ul>
                         </div> 
                  </div>  

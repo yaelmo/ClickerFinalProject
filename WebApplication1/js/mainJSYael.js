@@ -12,19 +12,21 @@ function onClickQuestionnaire() {
 
 }
 
-function onClickQuestion() {
-    document.getElementById('left_column_Body_StockQuestion').style.display = 'none';
-    document.getElementById('left_column_Body_fade').style.display = 'none';
+//function onClickQuestion() {
+//    document.getElementById('left_column_Body_StockQuestion').style.display = 'none';
+//    document.getElementById('left_column_Body_fade').style.display = 'none';
 
-}
+//}
 
 //save name of Questionnaire
 function setQuestionnaireName(id) {
     $("#MainContent_QuestionnaireName").val(id);
+  
 }
 
 function setQuestionID(id) {
     $("#MainContent_QuestionId").val(id);
+    alert(id);
 }
 
 
@@ -36,7 +38,7 @@ $(document).ready(function () {
 
         if (courseName == "") {
 
-            alert('הכנס שם/קוד קורס');
+            document.getElementById('MainContent_errMesegeEmpty').style.display = 'inline';
         }
         else//input not empty
         {

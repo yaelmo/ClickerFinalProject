@@ -48,11 +48,22 @@
                                     {
                                         NameQuestion.Text = listQuestion[j].getQuestion();
                                         %>
-                                <li id="Question"+'<% =listQuestion[j].getId() %>'>
-                                    <div id="QuestionLiDiv" class="liDive">
+                                <li id="QuestionLiDiv">
+                                    
+                                    <div id='<% =listQuestion[j].getId() %>' class="liDive">
 
-                                        <asp:Button runat="server" id="NameQuestion" OnClientClick="setQuestionId($(this).last().parent().prop('id'));"  Text=""></asp:Button>
-                                    </div>
+                                        <asp:Button runat="server" id="NameQuestion" OnClientClick="setQuestionId($(this).last().parent().prop('id'));" OnClick ="onClick_Question" Text=""></asp:Button>
+                                   </div>
+                                </li>
+                                <li>
+                                   <% 
+                                       
+                                    for(int k=0; k<listAnswer.Count; k++)
+                                        {
+                                        answer.Value = listAnswer[k].getAnswer();
+                                         %>
+                                    <input id="answer" type="text" runat="server" value="0"/>
+                                    <%}%>
                                 </li>
 
                                 <%}%>

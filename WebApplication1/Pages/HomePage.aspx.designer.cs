@@ -94,6 +94,15 @@ namespace WebApplication1.Pages {
         protected global::System.Web.UI.HtmlControls.HtmlInputText courseName;
         
         /// <summary>
+        /// errMesegeEmpty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl errMesegeEmpty;
+        
+        /// <summary>
         /// conectedUser control.
         /// </summary>
         /// <remarks>
