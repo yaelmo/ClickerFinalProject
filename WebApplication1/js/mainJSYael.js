@@ -118,7 +118,7 @@ $(document).ready(function () {
     });
 });
 
-// remove course
+// display input to inser name to remove course
 $(document).ready(function () {
     $("#MainContent_removeCourseBtn").click(function () {
 
@@ -164,7 +164,10 @@ $(document).ready(function () {
         document.getElementById('MainContent_addCourseBtn').style.display = 'inline';
         document.getElementById('buttonAddRemove').style.display = 'inline';
         
+        
+        document.getElementById('MainContent_errMesegeEmpty').style.display = 'none';
         document.getElementById('inputAddRemove').style.display = 'none';
+        
 
     });
 });
