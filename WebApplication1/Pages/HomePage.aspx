@@ -45,7 +45,8 @@
                   <ul>
                          <li>
                             <input id="removeCourseBtn" class="myButton" runat="server" name="removeCourseBtn" type="button" value="הסר קורס"/>
-                            <asp:Button id="addCourseBtn" runat="server" OnClientClick="return false;" CssClass="myButton" Text="הוסף קורס"  />
+                            <input id="addCourseBtn" class="myButton" runat="server" name="addCourseBtn" type="button" value="הוסף קורס"/>
+                           <%--  <asp:Button id="" runat="server" OnClientClick="return false;" CssClass="myButton" Text="הוסף קורס"  />--%>
               </li>
                       
                          </ul>    
@@ -59,6 +60,7 @@
                          <li>
                               <input type="text" id="addOrremove" style="display: none" runat="server" value="0" />
                              <input id="addRemoveBtn" class="myButton" runat="server" name="addRemoveBtn" type="button" value=""/>
+<%--                             <asp:Button ID="addRemoveBtn" runat="server" OnClientClick="return false;" CssClass="myButton" Text="" />--%>
                             <input id="courseName" class="RegisterField" runat="server" name="courseName" type="text" />
 
                              

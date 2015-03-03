@@ -34,17 +34,17 @@ function setQuestionID(id) {
 $(document).ready(function () {
     $("#MainContent_addRemoveBtn").click(function () {
 
-        var courseName = $("#MainContent_courseName").val();
+        var courseInput = $("#MainContent_courseName").val();
 
-        if (courseName == "") {
+        if (courseInput == "") {
 
             document.getElementById('MainContent_errMesegeEmpty').style.display = 'inline';
         }
         else//input not empty
         {
-            if ($("#MainContent_addRemoveBtn").val() == "הסר")// remove course
+            if($("#MainContent_addRemoveBtn").val() == "הסר")// remove course
             {
-
+                
                 var isRemove = confirm("אתה בטוח שברצונך להסיר את הקורס?");
 
                 if (isRemove)// want remove course
@@ -53,7 +53,7 @@ $(document).ready(function () {
                     $.ajax({
                         type: "POST",
                         url: "HomePage.aspx/removeCourse_click",
-                        data: '{courseName: "' + courseName + '"}',
+                        data: '{courseName: "' + courseInput + '"}',
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function (result) {
@@ -80,7 +80,7 @@ $(document).ready(function () {
                 $.ajax({
                     type: "POST",
                     url: "HomePage.aspx/addCourse_click",
-                    data: '{courseName: "' + courseName + '"}',
+                    data: '{courseName: "' + courseInput + '"}',
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (result) {
@@ -111,6 +111,7 @@ $(document).ready(function () {
         document.getElementById('inputAddRemove').style.display = 'inline';
 
         document.getElementById('MainContent_addRemoveBtn').value = "הוסף";
+        //document.getElementById('<%=MainContent_addRemoveBtn.ClientID%>').value = "הוסף";
         $("#MainContent_addOrremove").val("הוסף");
 
 
@@ -126,6 +127,7 @@ $(document).ready(function () {
         document.getElementById('inputAddRemove').style.display = 'inline';
 
         document.getElementById('MainContent_addRemoveBtn').value = "הסר";
+        //document.getElementById('<%=MainContent_addRemoveBtn.ClientID%>').value = "הסר";
         $("#MainContent_addOrremove").val("הסר");
 
     });

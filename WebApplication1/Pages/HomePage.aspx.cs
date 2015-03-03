@@ -23,7 +23,7 @@ namespace WebApplication1.Pages
         private static CourseBL courseBL;
         private static CourseRegisterBL courseRegisterBL;
         private static GlobalFunction global;
-        
+
         public static List<Course> listCourse;
         static List<Student> listStudent;
         static List<Lecturer> listLecturer;
@@ -56,7 +56,7 @@ namespace WebApplication1.Pages
             if (Session["id"] != null)
             {
 
-                if (Session["userType"] != null && ((String)Session["userType"]).Equals("0"))
+                if (Session["userType"] != null && (Session["userType"]).Equals("0"))
                 {
 
                     listCourse = courseBL.getCoursesByIdLecturer(Convert.ToInt32(Session["id"]));// get all courses of this lecturer
@@ -90,7 +90,7 @@ namespace WebApplication1.Pages
         }
 
 
-         //free session and redirect to login page.
+        //free session and redirect to login page.
         protected void logout_click(object sender, EventArgs e)
         {
             Session.Abandon();
@@ -99,59 +99,75 @@ namespace WebApplication1.Pages
 
         //add new course 
         [System.Web.Services.WebMethod(EnableSession = true)]
-        public static string addCourse_click(String courseName)
+        public static string addCourse_click(String courseInput)
         {
 
-            String tempName = courseName;
-            int userId, tempId, idCourse;
-            //idCourse = Convert.ToInt32(courseName);
-
-            if (courseName.Length > MAX_LENGTH_NAME_COURSE)// name to long
+            if (courseInput.Length > MAX_LENGTH_NAME_COURSE)// name to long
             {
                 return "שם הקורס ארוך מדי. מותר לכל היותר " + MAX_LENGTH_NAME_COURSE + " תווים.";
             }
 
-            int maxIdCourse;
+            //student(courseInput=courseCode) or lecturer(courseInput=courseName)
+            int courseCode, userId;
+            String courseName, userType;
 
+            userType = (String)HttpContext.Current.Session["userType"];
             userId = Convert.ToInt32(HttpContext.Current.Session["id"]);
-           // tempName = Convert.ToString(courseBL.getNameById(idCourse));
-            for (int i = 0; i < listCourse.Count; i++)// check if this course exist
-            {
-                tempName = listCourse[i].getName().Trim();
-                tempId = listCourse[i].getLecturerID();
 
-                if (tempName.Equals(courseName) && tempId == userId)
-                {
-                    return "שם הקורס כבר קיים";
-                }
-
-            }
-
-            if (HttpContext.Current.Session["userType"].Equals("0"))//lecurer
+            if (userType.Equals("0"))// lecturer
             {
-                // add course to DB
-                maxIdCourse = courseBL.getMaxIdCourse();
-                courseBL.AddCourse(maxIdCourse + 1, courseName, userId);
-            }
-            else//student
-            {
-                int courseID = 0, tempCourseID;
-                tempCourseID = courseBL.getMaxIdCourse();
                 try
                 {
-                    courseID = courseBL.getIdByIdLecturerAndCourseName(Convert.ToInt32(HttpContext.Current.Session["id"]), courseName); //Convert.ToInt32(courseName);  /////////////////////// get id course by course name and lecturer id
+                    courseName = courseInput;
                 }
                 catch (FormatException)
                 {
-                    return ".הכנס מספר קורס";
+                    return "נסה שם קורס אחר.";
                 }
 
-                if (courseID > tempCourseID)
+                String tempName;
+                int maxIdCourse;
+
+                for (int i = 0; i < listCourse.Count; i++)// check if this course exist
+                {
+
+                    tempName = listCourse[i].getName().Trim();
+                    if (tempName.Equals(courseInput))
+                    {
+                        return "שם הקורס כבר קיים";
+                    }
+                    else//add course
+                    {
+                        // add course to DB
+                        maxIdCourse = courseBL.getMaxIdCourse();
+                        courseBL.AddCourse(maxIdCourse + 1, courseInput, userId);
+                    }
+                }
+            }
+            else// student
+            {
+                try
+                {
+                    courseCode = Convert.ToInt32(courseInput);
+                }
+                catch (FormatException)
+                {
+                    return "הכנס קוד קורס.";
+                }
+
+                int maxCourseId, maxCourseIdRegister;
+
+                //lecturerId = courseBL.getIdLecturerByCourseId(courseCode);
+                maxCourseId = courseBL.getMaxIdCourse();
+                if (courseCode > maxCourseId)
                 {
                     return "הקורס לא קיים במערכת.";
                 }
-                maxIdCourse = courseRegisterBL.maxIdCourseRegister();
-                courseRegisterBL.AddCourseRegister(maxIdCourse + 1, courseID, Convert.ToInt32(HttpContext.Current.Session["id"]));
+                else//add course to courseRegister table
+                {
+                    maxCourseIdRegister = courseRegisterBL.maxIdCourseRegister();
+                    courseRegisterBL.AddCourseRegister(maxCourseIdRegister + 1, courseCode, userId);
+                }
             }
 
             return ".הקורס נוסף בהצלחה";
@@ -159,9 +175,9 @@ namespace WebApplication1.Pages
 
         //remov course
         [System.Web.Services.WebMethod(EnableSession = true)]
-        public static String removeCourse_click(String courseName)
+        public static String removeCourse_click(String courseInput)
         {
-            String tempName, nameCourse = courseName;
+            String tempName, nameCourse = courseInput;
             int idCourse;
 
             if (HttpContext.Current.Session["userType"].Equals("0"))//lecurer
@@ -208,9 +224,9 @@ namespace WebApplication1.Pages
             return "הקורס לא קיים במערכת.";
         }
 
-        
 
-       // [System.Web.Services.WebMethod(EnableSession = true)]
+
+        // [System.Web.Services.WebMethod(EnableSession = true)]
         public void goStock_Click(object sender, EventArgs e)
         {
             String id = courseId.Value;

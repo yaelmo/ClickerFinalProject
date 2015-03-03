@@ -86,6 +86,24 @@ namespace FinalProject.DAL
             con.Close();
             return listCourse;
         }
+
+        public int getIdLecturerByCourseId(int courseId)
+        {
+            con.Open();
+            string sqlString = "select c.LecturerID from Course c where c.Id = " + courseId + ";";
+            SqlCommand com = new SqlCommand(sqlString, con);
+            int LecturerId = 0;
+            using (SqlDataReader rdr = com.ExecuteReader())
+            {
+                while (rdr.Read())
+                {
+                    LecturerId = Convert.ToInt32(rdr["LecturerID"]);
+                }
+            }
+
+            con.Close();
+            return LecturerId;
+        }
         public String getNameById(int Id)
         {
             con.Open();
