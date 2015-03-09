@@ -42,6 +42,7 @@ $(document).ready(function () {
         }
         else//input not empty
         {
+            
             if($("#MainContent_addRemoveBtn").val() == "הסר")// remove course
             {
                 
@@ -53,7 +54,7 @@ $(document).ready(function () {
                     $.ajax({
                         type: "POST",
                         url: "HomePage.aspx/removeCourse_click",
-                        data: '{courseName: "' + courseInput + '"}',
+                        data: '{courseInput: "' + courseInput + '"}',
                         contentType: "application/json; charset=utf-8",
                         dataType: "json",
                         success: function (result) {
@@ -77,10 +78,11 @@ $(document).ready(function () {
             }
             else // add new course
             {
+               
                 $.ajax({
                     type: "POST",
                     url: "HomePage.aspx/addCourse_click",
-                    data: '{courseName: "' + courseInput + '"}',
+                    data: '{courseInput: "' + courseInput + '"}',
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (result) {

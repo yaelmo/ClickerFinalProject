@@ -98,7 +98,8 @@ namespace WebApplication1.Pages
         }
 
         //add new course 
-        [System.Web.Services.WebMethod(EnableSession = true)]
+       // [System.Web.Services.WebMethod(EnableSession = true)]
+        [WebMethod]
         public static string addCourse_click(String courseInput)
         {
 
@@ -136,13 +137,10 @@ namespace WebApplication1.Pages
                     {
                         return "שם הקורס כבר קיים";
                     }
-                    else//add course
-                    {
-                        // add course to DB
-                        maxIdCourse = courseBL.getMaxIdCourse();
-                        courseBL.AddCourse(maxIdCourse + 1, courseInput, userId);
-                    }
                 }
+                // add course to DB
+                maxIdCourse = courseBL.getMaxIdCourse();
+                courseBL.AddCourse(maxIdCourse + 1, courseInput, userId);
             }
             else// student
             {
@@ -163,8 +161,16 @@ namespace WebApplication1.Pages
                 {
                     return "הקורס לא קיים במערכת.";
                 }
-                else//add course to courseRegister table
+                else// this course exist in courses table
                 {
+                    for (int i = 0; i < listCourse.Count; i++)// check if this course exist
+                    {
+                        if (listCourse[i].getId().ToString().Equals(courseInput))
+                        {
+                            return "שם הקורס כבר קיים";
+                        }
+                    }
+                    //add course to courseRegister table
                     maxCourseIdRegister = courseRegisterBL.maxIdCourseRegister();
                     courseRegisterBL.AddCourseRegister(maxCourseIdRegister + 1, courseCode, userId);
                 }

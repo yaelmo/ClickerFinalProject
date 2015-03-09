@@ -44,8 +44,8 @@
               <div id="buttonAddRemove" class="buttonAddRemove" >
                   <ul>
                          <li>
-                            <input id="removeCourseBtn" class="myButton" runat="server" name="removeCourseBtn" type="button" value="הסר קורס"/>
-                            <input id="addCourseBtn" class="myButton" runat="server" name="addCourseBtn" type="button" value="הוסף קורס"/>
+                            <input id="removeCourseBtn" class="myButton" runat="server"  name="removeCourseBtn" type="button" value="הסר קורס"/>
+                            <input id="addCourseBtn" class="myButton" runat="server"  name="addCourseBtn" type="button" value="הוסף קורס"/>
                            <%--  <asp:Button id="" runat="server" OnClientClick="return false;" CssClass="myButton" Text="הוסף קורס"  />--%>
               </li>
                       
@@ -53,7 +53,7 @@
                 </div>
                 
                  <div id="inputAddRemove" class="buttonAddRemove" style="display:none">
-                     <ul>
+                     <ol>
                          <li>
                              <asp:Button ID="closeButton" runat="server" OnClientClick="return false;" CssClass="closeButton" Text="x"/>
                          </li>
@@ -68,7 +68,7 @@
                          <li>
                           <label id="errMesegeEmpty" style="display: none" runat="server" class="errMesege">יש להכניס תחילה את שם הקורס*</label>
                       </li>
-                         </ul>
+                         </ol>
                         </div> 
                  </div>  
              <div class="col-4">
