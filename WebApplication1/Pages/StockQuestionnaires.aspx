@@ -78,16 +78,34 @@
 
            
               <div id="buttonAddRemoveQ" class="buttonAddRemove" >
-
+                  <ol>
+                         <li>
                         <input id="removeCourseBtnFromQ" class="myButton" runat="server" name="removeCourseBtn" type="button" value="הסר קורס"/>  
 
                         <input id="removeQuestionnaireBtn" class="myButton" runat="server" name="removeQuestionnaireBtn" type="button" value="הסרת שאלון"/>  
                         <asp:Button ID="addQuestionnaireBtn" runat="server" CssClass="myButton" OnClick="add_Question_Click" Text="הוספת שאלון"></asp:Button>
-
+</li>                      
+                      
+                      </ol>
+                  <div id="inputQtoRemove" style="display:none">
+                      <ol>
+                      <li>
+                             <asp:Button ID="closeButtonRemoveQ" runat="server" OnClientClick="return false;" CssClass="closeButton" Text="x"/>
+                         </li>
+                         <li>
+                             <input id="removeBtn" class="myButton" runat="server" name="removeBtn" type="button" value="הסר"/>
+                            <input id="removeQname" class="RegisterField" runat="server" name="removeQname" type="text" />
+                            
+                            </li>
+                         <li>
+                          <label id="errMesegeEmpty" style="display: none" runat="server" class="errMesege">יש להכניס תחילה את שם השאלון*</label>
+                      </li>
+                          </ol>
+                  </div>
                     </div>
-              
+               
                </div>  
-            
+           
              <div class="col-4">
            
               </div>

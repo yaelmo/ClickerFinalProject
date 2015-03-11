@@ -98,8 +98,7 @@ namespace WebApplication1.Pages
         }
 
         //add new course 
-       // [System.Web.Services.WebMethod(EnableSession = true)]
-        [WebMethod]
+       [System.Web.Services.WebMethod(EnableSession = true)]
         public static string addCourse_click(String courseInput)
         {
 

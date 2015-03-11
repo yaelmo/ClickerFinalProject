@@ -205,12 +205,24 @@ min-height: 45px;
     max-height: 100px;
 }
 #inputAddRemove{
-    border: 1px solid #999999;
+        border: 1px solid #999999;
 width: 300px;
 margin-right: 18px;
 }
 .buttonAddRemove li {
 
     text-align:right
+
+}
+
+#inputQtoRemove{
+        border: 1px solid #999999;
+width: 238px;
+
+float:right;
+}
+
+#MainContent_removeQname{
+    margin-right: 4px;
 
 }

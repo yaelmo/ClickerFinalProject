@@ -140,7 +140,7 @@ $(document).ready(function () {
 $(document).ready(function () {
     $("#MainContent_removeCourseBtnFromQ").click(function () {
         
-        var remove = confirm("האם אתה בטוח שברצונך להסיר את הקורס עם כל השאלונים?");
+        var remove = confirm("האם אתה בטוח שברצונך להסיר את הקורס כולל השאלונים?");
         if (remove) {
             $.ajax({
                 type: "POST",
@@ -185,4 +185,22 @@ $(document).ready(function () {
 
     });
 });
+
+// close button remove Questionnaire
+$(document).ready(function () {
+    $("#MainContent_closeButtonRemoveQ").click(function () {
+
+        document.getElementById('inputQtoRemove').style.display = 'none';
+
+    });
+});
+
+// remove Questionnaire
+$(document).ready(function () {
+    $("#MainContent_removeQuestionnaireBtn").click(function () {
+
+        document.getElementById('inputQtoRemove').style.display = 'inline';
+    });
+});
+
 
